@@ -57,12 +57,9 @@ export async function signup(req, res) {
 
     generateTokenAndSetCookie(newUser._id, res);
     await newUser.save();
-    // Send response & Remove password from the response
     res
       .status(201)
       .json({ success: true, user: { ...newUser._doc, password: "" } });
-
-    ///
   } catch (error) {
     console.log("Error in signup controller", error.message);
     res.status(500).json({ success: false, message: "Internal server error" });
