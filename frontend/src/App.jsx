@@ -3,6 +3,7 @@ import LoginPage from "./Pages/LoginPage";
 import SignupPage from "./Pages/SignupPage";
 import HomePage from "./Pages/home/HomePage";
 import Footer from "./components/Footer";
+import { Toaster } from "react-hot-toast";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <Route path="/signup" element={<SignupPage />} />
       </Routes>
       <Footer />
+      <Toaster />
     </>
   );
 }
