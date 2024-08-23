@@ -23,7 +23,7 @@ export const userAuthStore = create((set) => ({
     set({ isLoggingIn: true });
     try {
       //
-      const response = await axios.post("/api/v1/auth/login");
+      const response = await axios.post("/api/v1/auth/login", credentials);
       set({ user: response.data.user, isLoggingIn: false });
     } catch (error) {
       //
