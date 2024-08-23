@@ -1,13 +1,16 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { userAuthStore } from "../store/authUser.js";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const { login } = userAuthStore();
+
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log(email, password);
+    login({ email, password });
   };
 
   return (

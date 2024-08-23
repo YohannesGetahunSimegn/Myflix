@@ -77,22 +77,22 @@ export async function login(req, res) {
     }
 
     const user = await User.findOne({ email: email });
-
     if (!user) {
       return res
-        .status(400)
+        .status(404)
         .json({ success: false, message: "Invalid credentials" });
     }
 
-    const ispasswordcorrect = await bcrypt.compare(password, user.password);
+    const isPasswordCorrect = await bcrypt.compare(password, user.password);
 
-    if (!ispasswordcorrect) {
+    if (!isPasswordCorrect) {
       return res
         .status(400)
         .json({ success: false, message: "Invalid credentials" });
     }
 
     generateTokenAndSetCookie(user._id, res);
+
     res.status(200).json({
       success: true,
       user: {
@@ -112,6 +112,17 @@ export async function logout(req, res) {
     res.status(200).json({ success: true, message: "Logged out successfully" });
   } catch (error) {
     console.log("Error in logout controller", error.message);
+    res.status(500).json({ success: false, message: "Internal server error" });
+  }
+}
+
+export async function authCheck(req, res) {
+  try {
+    //
+    res.status(200).json({ success: true, user: req.user });
+  } catch (error) {
+    //
+    console.log("Error in authCheck controller", error.message);
     res.status(500).json({ success: false, message: "Internal server error" });
   }
 }
