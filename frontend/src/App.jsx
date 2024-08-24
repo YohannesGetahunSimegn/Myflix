@@ -5,6 +5,8 @@ import HomePage from "./Pages/home/HomePage";
 import Footer from "./components/Footer";
 import WatchPage from "./Pages/WatchPage";
 import SearchPage from "./Pages/SearchPage";
+import SearchHistoryPage from "./Pages/SearchHistoryPage";
+import NotFoundPage from "./Pages/NotFoundPage";
 import { Toaster } from "react-hot-toast";
 import { userAuthStore } from "./store/authUser";
 import { useEffect } from "react";
@@ -50,6 +52,11 @@ export default function App() {
           path="/search"
           element={user ? <SearchPage /> : <Navigate to={"/login"} />}
         />
+        <Route
+          path="/history"
+          element={user ? <SearchHistoryPage /> : <Navigate to={"/login"} />}
+        />
+        <Route path="/*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
       <Toaster />
