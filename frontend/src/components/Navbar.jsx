@@ -12,12 +12,14 @@ const Navbar = () => {
 
   const { setContentType } = useContentStore();
 
+  console.log("user:", user);
+
   return (
     <header className="max-w-6xl mx-auto flex flex-wrap items-center justify-between p-4 h-20 ">
       <div className="flex items-center gap-10 z-50">
         <Link to="/">
           <img
-            src="myflix-logo.png"
+            src="/myflix-logo.png"
             alt="Myflix logo"
             className="w-32 sm:w-40"
           />
@@ -51,7 +53,7 @@ const Navbar = () => {
         </Link>
 
         <img
-          src={user.image}
+          src={`/${user.image}` || "/default-avatar.png"}
           alt="Avatar"
           className="h-8 rounded cursor-pointer"
         />
