@@ -131,10 +131,7 @@ export async function removeItemFromSearchHistory(req, res) {
       .json({ success: true, message: "Item removed from search history" });
   } catch (error) {
     //
-    console.log(
-      "Error in removeItemFromSearchHistory controller: ",
-      error.message
-    );
+
     res.status(400).json({ success: false, message: "Internal Server Error" });
   }
 }
