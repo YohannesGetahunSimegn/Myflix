@@ -43,12 +43,21 @@ app.use("/api/v1/tv", protectRoute, tvRoutes);
 app.use("/api/v1/search", protectRoute, searchRoutes);
 
 if (ENV_VARS.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "/frontend/dist")));
+  const distPath = path.join(__dirname, "/frontend/dist");
+  console.log(`Serving static files from: ${distPath}`);
+
+  app.use(express.static(distPath));
 
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+    res.sendFile(path.resolve(distPath, "index.html"), (err) => {
+      if (err) {
+        console.error("Error sending file:", err);
+        res.status(err.status).end();
+      }
+    });
   });
 }
+
 app.listen(5000, () => {
   console.log("Server started at http://localhost:" + PORT);
   connectDB();
