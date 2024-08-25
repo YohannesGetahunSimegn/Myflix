@@ -27,7 +27,6 @@
     "xss-clean": "^0.1.4"
   },
   "devDependencies": {
-    "nodemon": "^3.1.4",
-    "win-node-env": "^0.6.1"
+    "nodemon": "^3.1.4"
   }
 }
