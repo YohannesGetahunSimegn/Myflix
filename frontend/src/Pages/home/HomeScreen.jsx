@@ -2,15 +2,27 @@ import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import { Info, Play } from "lucide-react";
 import useGetTrendingContent from "../../hooks/useGetTrendingContent";
-import { MOVIE_CATEGORIES, TV_CATEGORIES } from "../../utils/constants";
+import {
+  MOVIE_CATEGORIES,
+  ORIGINAL_IMG_BASE_URL,
+  TV_CATEGORIES,
+} from "../../utils/constants";
 import { useContentStore } from "../../store/content";
 import MovieSlider from "../../components/MovieSlider";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const HomeScreen = () => {
   const { trendingContent } = useGetTrendingContent();
   const { contentType } = useContentStore();
   const [imgLoading, setImgLoading] = useState(true);
+
+  useEffect(() => {
+    console.log({
+      img: ORIGINAL_IMG_BASE_URL + trendingContent?.backdrop_path,
+      trendingContent: trendingContent,
+    });
+    console.log("trending", trendingContent);
+  }, [imgLoading]);
 
   if (!trendingContent)
     return (
@@ -31,7 +43,7 @@ const HomeScreen = () => {
         )}
 
         <img
-          src={`"https://image.tmdb.org/t/p/original"${trendingContent?.backdrop_path}`}
+          src={ORIGINAL_IMG_BASE_URL + trendingContent?.backdrop_path}
           alt="Hero img"
           className="absolute top-0 left-0 w-full h-full object-cover -z-50"
           onLoad={() => {
