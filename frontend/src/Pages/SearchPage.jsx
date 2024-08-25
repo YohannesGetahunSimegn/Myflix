@@ -92,7 +92,7 @@ const SearchPage = () => {
                 {activeTab === "person" ? (
                   <div className="flex flex-col items-center">
                     <img
-                      src={ORIGINAL_IMG_BASE_URL + result.profile_path}
+                      src={`${ORIGINAL_IMG_BASE_URL}${result.profile_path}`}
                       alt={result.name}
                       className="max-h-96 rounded mx-auto"
                     />
@@ -106,7 +106,7 @@ const SearchPage = () => {
                     }}
                   >
                     <img
-                      src={ORIGINAL_IMG_BASE_URL + result.poster_path}
+                      src={`${ORIGINAL_IMG_BASE_URL}${result.poster_path}`}
                       alt={result.title || result.name}
                       className="w-full h-auto rounded"
                     />
