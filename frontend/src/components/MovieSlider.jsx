@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useContentStore } from "../store/content";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { SMALL_IMG_BASE_URL } from "../utils/constants";
+// import { SMALL_IMG_BASE_URL } from "../utils/constants";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const MovieSlider = ({ category }) => {
@@ -63,7 +63,7 @@ const MovieSlider = ({ category }) => {
           >
             <div className="rounded-lg overflow-hidden">
               <img
-                src={`${SMALL_IMG_BASE_URL}${item.backdrop_path}`}
+                src={`"https://image.tmdb.org/t/p/w500"${item.backdrop_path}`}
                 alt="Movie image"
                 className="transition-transform duration-300 ease-in-out group-hover:scale-125"
               />

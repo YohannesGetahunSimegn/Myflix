@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
-import { SMALL_IMG_BASE_URL } from "../utils/constants";
+// import { SMALL_IMG_BASE_URL } from "../utils/constants";
 import { Trash } from "lucide-react";
 import toast from "react-hot-toast";
 
@@ -84,7 +84,7 @@ const SearchHistoryPage = () => {
               className="bg-gray-800 p-4 rounded flex items-start"
             >
               <img
-                src={`${SMALL_IMG_BASE_URL}${entry.image}`}
+                src={`"https://image.tmdb.org/t/p/w500"${entry.image}`}
                 alt="History image"
                 className="size-16 rounded-full object-cover mr-4"
               />
