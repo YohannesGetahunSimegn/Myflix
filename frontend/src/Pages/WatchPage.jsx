@@ -196,7 +196,7 @@ const WatchPage = () => {
             <p className="mt-4 text-lg">{content?.overview}</p>
           </div>
           <img
-            src={ORIGINAL_IMG_BASE_URL + content?.poster_path}
+            src={`${ORIGINAL_IMG_BASE_URL}${content?.poster_path}`}
             alt="Poster image"
             className="max-h-[600px] rounded-md"
           />
@@ -219,7 +219,7 @@ const WatchPage = () => {
                     className="w-52 flex-none"
                   >
                     <img
-                      src={SMALL_IMG_BASE_URL + content.poster_path}
+                      src={`${SMALL_IMG_BASE_URL}${content?.poster_path}`}
                       alt="Poster path"
                       className="w-full h-auto rounded-md"
                     />

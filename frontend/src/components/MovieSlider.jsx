@@ -63,7 +63,7 @@ const MovieSlider = ({ category }) => {
           >
             <div className="rounded-lg overflow-hidden">
               <img
-                src={SMALL_IMG_BASE_URL + item.backdrop_path}
+                src={`${SMALL_IMG_BASE_URL}${item.backdrop_path}`}
                 alt="Movie image"
                 className="transition-transform duration-300 ease-in-out group-hover:scale-125"
               />

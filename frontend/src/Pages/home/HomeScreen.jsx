@@ -35,7 +35,7 @@ const HomeScreen = () => {
         )}
 
         <img
-          src={ORIGINAL_IMG_BASE_URL + trendingContent?.backdrop_path}
+          src={`${ORIGINAL_IMG_BASE_URL}${trendingContent?.backdrop_path}`}
           alt="Hero img"
           className="absolute top-0 left-0 w-full h-full object-cover -z-50"
           onLoad={() => {
