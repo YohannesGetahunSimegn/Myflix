@@ -2,7 +2,6 @@ import rateLimit from "express-rate-limit";
 import helmet from "helmet";
 import expressMongoSanitize from "express-mongo-sanitize";
 import xss from "xss-clean";
-import hpp from "hpp";
 
 import express from "express";
 import cookieParser from "cookie-parser";
@@ -38,22 +37,6 @@ app.use(expressMongoSanitize()); // Data sanitization against NoSQL query inject
 
 app.use(xss()); //Data sanitization
 
-app.use(
-  hpp({
-    whitelist: [
-      "tv",
-      "movie",
-      "history",
-      "person",
-      "category",
-      "similar",
-      "details",
-      "trailers",
-      "trending",
-    ],
-  })
-); // Prevent parameter polution
-
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/movie", protectRoute, movieRoutes);
 app.use("/api/v1/tv", protectRoute, tvRoutes);
@@ -66,7 +49,6 @@ if (ENV_VARS.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
   });
 }
-
 app.listen(5000, () => {
   console.log("Server started at http://localhost:" + PORT);
   connectDB();
