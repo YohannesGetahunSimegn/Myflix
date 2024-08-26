@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "backend/server.js",
   "scripts": {
-    "build": "npm --prefix ./frontend run build",
+    "build": "npx --prefix ./frontend vite build",
     "serve": "NODE_ENV=production node backend/server.js",
-    "start": "npx concurrently \"npm run serve\" \"npx --prefix ./frontend vite\"",
+    "start": "npx concurrently \"npm run serve\" \"npm --prefix ./frontend run dev\"",
     "start:prod": "npx concurrently \"npm run serve\" \"npx --prefix ./frontend vite build && npx --prefix ./frontend vite preview\""
   },
   "keywords": [],
