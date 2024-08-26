@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "main": "backend/server.js",
   "scripts": {
-    "dev": "NODE_ENV=development nodemon backend/server.js",
-    "start": "NODE_ENV=production node backend/server.js",
-    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
+    "build": "concurrently  \"npm --prefix ./frontend run build\"",
+    "serve": "NODE_ENV=production node backend/server.js",
+    "start": "concurrently \"npm run serve\" \"npm --prefix ./frontend run dev\"",
+    "start:prod": "concurrently \"npm --prefix ./backend run start:prod\" \"npm --prefix ./frontend run build && npm --prefix ./frontend run start\""
   },
   "keywords": [],
   "author": "",
@@ -22,6 +23,7 @@
     "mongoose": "^8.5.3"
   },
   "devDependencies": {
+    "concurrently": "^8.2.2",
     "nodemon": "^3.1.4"
   }
 }
