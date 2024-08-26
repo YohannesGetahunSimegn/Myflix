@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "main": "backend/server.js",
   "scripts": {
-    "build": "concurrently  \"npm --prefix ./frontend run build\"",
+    "build": "npx concurrently  \"npm --prefix ./frontend run build\"",
     "serve": "NODE_ENV=production node backend/server.js",
-    "start": "concurrently \"npm run serve\" \"npm --prefix ./frontend run dev\"",
-    "start:prod": "concurrently \"npm --prefix ./backend run start:prod\" \"npm --prefix ./frontend run build && npm --prefix ./frontend run start\""
+    "start": "npx concurrently \"npm run serve\" \"npm --prefix ./frontend run dev\"",
+    "start:prod": "npx concurrently \"npm --prefix ./backend run start:prod\" \"npm --prefix ./frontend run build && npm --prefix ./frontend run start\""
   },
   "keywords": [],
   "author": "",
@@ -20,10 +20,10 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.5.3"
+    "mongoose": "^8.5.3",
+    "concurrently": "^7.0.0"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2",
     "nodemon": "^3.1.4"
   }
 }
