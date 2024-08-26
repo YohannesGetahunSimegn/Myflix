@@ -43,25 +43,10 @@ app.use("/api/v1/tv", protectRoute, tvRoutes);
 app.use("/api/v1/search", protectRoute, searchRoutes);
 
 if (ENV_VARS.NODE_ENV === "production") {
-<<<<<<< HEAD
-  const distPath = path.join(__dirname, "/frontend/dist");
-  console.log(`Serving static files from: ${distPath}`);
-
-  app.use(express.static(distPath));
-
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(distPath, "index.html"), (err) => {
-      if (err) {
-        console.error("Error sending file:", err);
-        res.status(err.status).end();
-      }
-    });
-=======
   app.use(express.static(path.join(__dirname, "frontend", "dist")));
 
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
->>>>>>> m3
   });
 }
 
