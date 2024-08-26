@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "main": "backend/server.js",
   "scripts": {
-    "build": "npx concurrently  \"npm --prefix ./frontend run build\"",
+    "build": "npm --prefix ./frontend run build",
     "serve": "NODE_ENV=production node backend/server.js",
     "start": "npx concurrently \"npm run serve\" \"npm --prefix ./frontend run dev\"",
-    "start:prod": "npx concurrently \"npm --prefix ./backend run start:prod\" \"npm --prefix ./frontend run build && npm --prefix ./frontend run start\""
+    "start:prod": "npx concurrently \"npm run serve\" \"npm --prefix ./frontend run build && npm --prefix ./frontend run start\""
   },
   "keywords": [],
   "author": "",
